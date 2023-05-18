@@ -1,21 +1,12 @@
 import React from "react";
+import Note from "./Note";
 
-const Header = () => (
+const NotesList = () => (
   <ul className="notes-list">
-    <li className="note">
-      <input type="text" placeholder="Title" className="note__title" />
-      <textarea placeholder="Description..." className="note__description" />
-      <span className="note__delete">X</span>
-    </li>
-    <li className="note">
-      <input type="text" placeholder="Title" className="note__title" />
-      <textarea placeholder="Description..." className="note__description" />
-      <span className="note__delete">X</span>
-    </li>
-    <li className="note">
-      <input type="text" placeholder="Title" className="note__title" />
-      <textarea placeholder="Description..." className="note__description" />
-      <span className="note__delete">X</span>
-    </li>
+    <Note />
+    <Note />
+    <Note />
   </ul>
 );
+
+export default NotesList;
