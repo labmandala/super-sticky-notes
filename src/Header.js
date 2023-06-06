@@ -9,6 +9,7 @@ const Header = (props) => (
         type="text"
         placeholder="Type here to search..."
         className="search"
+        value={props.searchText}
       />
     </aside>
   </header>
