@@ -7,7 +7,14 @@ for this application, delegating rendering logic to
 presentational components. */
 class App extends Component {
   state = {
-    notes: [],
+    notes: [
+      {
+        id: Date.now(),
+        title: "",
+        description: "",
+        doesMatchSearch: true
+      }
+    ],
     searchText: ""
   };
   addNote = () => {
@@ -62,13 +69,21 @@ class App extends Component {
         note.doesMatchSearch = hasMatch;
         return note;
       }
-      
     });
-
+    this.setState({
+      searchText: newSearchText,
+      notes: updatedNotes
+    });
+  };
+  
   render() {
     return (
       <div>
-        <Header searchText={this.state.searchText} addNote={this.addNote} />
+        <Header
+          searchText={this.state.searchText}
+          addNote={this.addNote}
+          onSearch={this.onSearch}
+        />
         <NotesList notes={this.state.notes} onType={this.onType} />
       </div>
     );
