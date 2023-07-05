@@ -12,17 +12,17 @@ class App extends Component {
         id: Date.now(),
         title: "",
         description: "",
-        doesMatchSearch: true
-      }
+        doesMatchSearch: true,
+      },
     ],
-    searchText: ""
+    searchText: "",
   };
   addNote = () => {
     const newNote = {
       id: Date.now(),
       title: "",
       description: "",
-      doesMatchSearch: true
+      doesMatchSearch: true,
     };
     const newNotes = [newNote, ...this.state.notes];
     this.setState({ notes: newNotes });
@@ -72,10 +72,17 @@ class App extends Component {
     });
     this.setState({
       searchText: newSearchText,
-      notes: updatedNotes
+      notes: updatedNotes,
     });
   };
-  
+
+  removeNote = (noteId) => {
+    /* remove note by id of note that the user clicked on */
+    const notIdMatch = (note) => note.id !== noteId;
+    const updatedNotes = this.state.notes.filter(notIdMatch);
+    this.setState({ notes: updatedNotes });
+  };
+
   render() {
     return (
       <div>
@@ -84,7 +91,11 @@ class App extends Component {
           addNote={this.addNote}
           onSearch={this.onSearch}
         />
-        <NotesList notes={this.state.notes} onType={this.onType} />
+        <NotesList 
+          notes={this.state.notes} 
+          onType={this.onType} 
+          removeNote={this.removeNote}
+        />
       </div>
     );
   }
