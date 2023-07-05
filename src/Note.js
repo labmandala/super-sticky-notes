@@ -37,7 +37,9 @@ const Note = (props) => {
         placeholder="Description..."
         className="note__description"
       />
-      <span onClick={clickDelete} className="note__delete">X</span>
+      <span onClick={clickDelete} className="note__delete">
+        X
+      </span>
     </li>
   );
 };
